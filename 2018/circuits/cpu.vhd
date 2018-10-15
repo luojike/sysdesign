@@ -17,10 +17,13 @@ architecture cpu_behav of cpu is
 	type regfile is array(natural range<>) of std_logic_vector(31 downto 0);
 	signal regs: regfile(31 downto 0);
 	signal pc: std_logic_vector(31 downto 0);
+	signal ir: std_logic_vector(31 downto 0);
 --signal next_pc: std_logic_vector(31 downto 0);
 
 begin
 	addrbus <= pc;
+	read <= '1';
+	ir <= databus;
 
 	do_reset: process(clk)
 	begin
