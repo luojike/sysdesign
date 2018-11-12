@@ -36,6 +36,8 @@ begin
         end if;
     end process;
 
+    databus <= dr;
+
     data <= memdata(to_integer(addrbus)) when read='1' else "ZZZZZZZZ";
 
 end architecture;
