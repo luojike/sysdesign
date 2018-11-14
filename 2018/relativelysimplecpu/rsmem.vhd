@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity mem is
+entity rsmem is
 	port(
 		    clk: in std_logic;
 		    reset: in std_logic;
@@ -13,7 +13,7 @@ entity mem is
 	    );
 end entity;
 
-architecture mem_behav of mem is
+architecture rsmem_behav of rsmem is
 	signal addr: std_logic_vector(15 downto 0);
 	signal rw : std_logic_vector(0 to 1);
 	type memtype is array(natural range<>) of std_logic_vector(7 downto 0);
