@@ -4,9 +4,7 @@ use ieee.numeric_std.all;
 
 
 package rsisa is
-	type opcode is array(7 downto 0) of std_logic;
-	type opaddr is array(15 downto 0) of std_logic;
-
+	
 	-- RS prefix is used to avoid tautonym such like AND, OR, XOR, NOT
 	constant RSNOP: std_logic_vector(7 downto 0) := "00000000";
 	constant RSLDAC: std_logic_vector(7 downto 0) := "00000001";
