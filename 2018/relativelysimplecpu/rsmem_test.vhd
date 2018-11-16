@@ -12,7 +12,7 @@ architecture rsmem_test_arch of rsmem_test is
 		port(
 			    clk: in std_logic;
 			    reset: in std_logic;
-			    addrbus: in std_logic_vector(16 downto 0);
+			    addrbus: in std_logic_vector(15 downto 0);
 			    databus: inout std_logic_vector(7 downto 0);
 			    read: in std_logic;
 			    write: in std_logic
@@ -42,13 +42,9 @@ begin
 	access_gen: process
 	begin
 		for i in 0 to n loop
-			addrbus <= std_logic_vector(to_unsigned(i, 16));  
-			read <= std_logic( to_unsigned(i mod 2) );
-			write <= std_logic( to_unsigned(i/2 mod 2) );
-			if (write='1') then
-				databus <= std_logic_vector(to_unsigned(i, 16));
-			end if;
-
+			addrbus <= std_logic_vector(to_unsigned(i mod 32, 16));  
+			read <= '1';
+			write <= '0';
 			wait for td;
 		end loop;
 		wait; -- wait forever, this means stop of simulation
