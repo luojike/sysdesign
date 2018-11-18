@@ -81,6 +81,6 @@ begin
 		end if;
 	end process;
 
-	databus <= memdata(to_integer(unsigned(addr))) when (rw(0)='1') else (others=>'Z');
+	databus <= memdata(to_integer(unsigned(addr))) when (rw(1)='0') else (others=>'Z');
 
 end architecture;
