@@ -2,9 +2,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-use work.rsisa.all;  -- constants of instruction opcodes
+use work.gwIR_list.all;  -- constants of instruction opcodes
 
-entity rscpu is
+entity gwcpu is
 	port(
 		    clk: in std_logic;
 		    reset: in std_logic;
@@ -15,7 +15,7 @@ entity rscpu is
 	    );
 end entity;
 
-architecture rscpu_behav of rscpu is
+architecture gwcpu_behav of gwcpu is
 	signal pc: std_logic_vector(15 downto 0);
 	signal ac: std_logic_vector(7 downto 0);
 	signal r: std_logic_vector(7 downto 0);
