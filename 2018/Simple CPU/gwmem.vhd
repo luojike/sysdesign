@@ -2,9 +2,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-use work.rsisa.all;
+use work.gsIR_list.all;
 
-entity rsmem is
+entity gwmem is
 	port(
 		    clk: in std_logic;
 		    reset: in std_logic;
@@ -15,7 +15,7 @@ entity rsmem is
 	    );
 end entity;
 
-architecture rsmem_behav of rsmem is
+architecture gwmem_behav of gwmem is
 	signal addr: std_logic_vector(15 downto 0);
 	signal rw : std_logic_vector(0 to 1);
 
