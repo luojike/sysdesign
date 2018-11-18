@@ -2,13 +2,13 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity rsmem_test is
+entity gwmem_test is
 	end entity;
 
-architecture rsmem_test_arch of rsmem_test is
+architecture gwmem_test_arch of gwmem_test is
 	constant td: time := 20 ns;
 	constant n: integer := 100;
-	component rsmem is
+	component gwmem is
 		port(
 			    clk: in std_logic;
 			    reset: in std_logic;
@@ -26,7 +26,7 @@ architecture rsmem_test_arch of rsmem_test is
 	signal read: std_logic;
 	signal write: std_logic;
 begin
-	mem_1: rsmem
+	mem_1: gwmem
 	port map(
 			clk => clk,  
 			reset => reset,
