@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 
-package rsisa is
+package IR_list is
 	
 	-- RS prefix is used to avoid tautonym such like AND, OR, XOR, NOT
 	constant RSNOP: std_logic_vector(7 downto 0) := "00000000";
