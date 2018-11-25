@@ -4,7 +4,7 @@ use ieee.numeric_std.all;
 
 use work.rsisa.all;
 
-entity rsmem is
+entity mem is
 	port(
 		    clk: in std_logic;
 		    reset: in std_logic;
@@ -15,7 +15,7 @@ entity rsmem is
 	    );
 end entity;
 
-architecture rsmem_behav of rsmem is
+architecture mem_behav of mem is
 	signal addr: std_logic_vector(15 downto 0);
 	signal rw : std_logic_vector(0 to 1);
 
