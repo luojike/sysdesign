@@ -2,11 +2,11 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity rscomp is
+entity comp is
 	end entity;
 
-architecture rscomp_test of rscomp is
-	component rscpu is
+architecture rscomp_test of comp is
+	component cpu is
 		port(
 			    clk: in std_logic;
 			    reset: in std_logic;
@@ -17,7 +17,7 @@ architecture rscomp_test of rscomp is
 		    );
 	end component;
 
-	component rsmem is
+	component mem is
 		port(
 			    clk: in std_logic;
 			    reset: in std_logic;
@@ -36,7 +36,7 @@ architecture rscomp_test of rscomp is
 	signal write: std_logic;
 
 begin
-	cpu_1: rscpu
+	cpu_1: cpu
 	port map(
 			clk => clk,
 			reset => reset,
