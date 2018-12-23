@@ -1,0 +1,29 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Tue Dec 18 08:23:05 2018
+[*]
+[dumpfile] "/home/mengbys/school/computerSYS/rs3.vcd"
+[dumpfile_mtime] "Tue Dec 18 08:21:00 2018"
+[dumpfile_size] 2296310
+[savefile] "/home/mengbys/school/computerSYS/fangzhenjieguo2.gtkw"
+[timestart] 0
+[size] 1853 1025
+[pos] -1 -1
+*-28.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] comp.
+[sst_width] 227
+[signals_width] 110
+[sst_expanded] 1
+[sst_vpaned_height] 295
+@28
+comp.cpu_1.clk
+comp.cpu_1.reset
+@22
+comp.cpu_1.state[5:0]
+comp.cpu_1.pc[15:0]
+comp.cpu_1.ir[7:0]
+comp.cpu_1.ac[7:0]
+@25
+comp.mem_1.res[7:0]
+[pattern_trace] 1
+[pattern_trace] 0
