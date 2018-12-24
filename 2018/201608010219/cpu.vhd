@@ -372,7 +372,7 @@ begin
 		elsif(state=jump1)	then	--dr<=m ar++
 		arload<='0';pcbus<='0';pcinc<='0';drload<='1';membus<='1';irload<='0';acreset<='0';acinc<='0';
 		rbus<='0';s<="0000";acload<='0';rload<='0';acbus<='0';arinc<='1';trbus<='0';drbus<='0';trload<='0';
-		read<='0';write1<='0';write<='0';pcload<='0';
+		read<='1';write1<='0';write<='0';pcload<='0';
 		elsif(state=jump2)	then	--tr<=dr dr<=m
 		arload<='0';pcbus<='0';pcinc<='0';drload<='1';membus<='1';irload<='0';acreset<='0';acinc<='0';
 		rbus<='0';s<="0000";acload<='0';rload<='0';acbus<='0';arinc<='0';trbus<='0';drbus<='0';trload<='1';
@@ -385,11 +385,11 @@ begin
 		elsif(state=jmpzy1)	then	--dr<=m ar++
 		arload<='0';pcbus<='0';pcinc<='0';drload<='1';membus<='1';irload<='0';acreset<='0';acinc<='0';
 		rbus<='0';s<="0000";acload<='0';rload<='0';acbus<='0';arinc<='1';trbus<='0';drbus<='0';trload<='0';
-		read<='0';write1<='0';write<='0';pcload<='0';
+		read<='1';write1<='0';write<='0';pcload<='0';
 		elsif(state=jmpzy2)	then	--tr<=dr dr<=m
 		arload<='0';pcbus<='0';pcinc<='0';drload<='1';membus<='1';irload<='0';acreset<='0';acinc<='0';
 		rbus<='0';s<="0000";acload<='0';rload<='0';acbus<='0';arinc<='0';trbus<='0';drbus<='0';trload<='1';
-		read<='0';write1<='0';write<='0';pcload<='0';
+		read<='1';write1<='0';write<='0';pcload<='0';
 		elsif(state=jmpzy3)	then	--pc<=dr,tr
 		arload<='0';pcbus<='0';pcinc<='0';drload<='0';membus<='0';irload<='0';acreset<='0';acinc<='0';
 		rbus<='0';s<="0000";acload<='0';rload<='0';acbus<='0';arinc<='0';trbus<='1';drbus<='1';trload<='0';
@@ -397,20 +397,20 @@ begin
 		elsif(state=jmpzn1)	then	--dr<=m ar++
 		arload<='0';pcbus<='0';pcinc<='1';drload<='0';membus<='0';irload<='0';acreset<='0';acinc<='0';
 		rbus<='0';s<="0000";acload<='0';rload<='0';acbus<='0';arinc<='0';trbus<='0';drbus<='0';trload<='0';
-		read<='0';write1<='0';write<='0';pcload<='0';
+		read<='1';write1<='0';write<='0';pcload<='0';
 		elsif(state=jmpzn2)	then	--tr<=dr dr<=m
 		arload<='0';pcbus<='0';pcinc<='1';drload<='0';membus<='0';irload<='0';acreset<='0';acinc<='0';
 		rbus<='0';s<="0000";acload<='0';rload<='0';acbus<='0';arinc<='0';trbus<='0';drbus<='0';trload<='0';
-		read<='0';write1<='0';write<='0';pcload<='0';
+		read<='1';write1<='0';write<='0';pcload<='0';
 		--jpnz
 		elsif(state=jpnzy1)	then	--dr<=m ar++
 		arload<='0';pcbus<='0';pcinc<='0';drload<='1';membus<='1';irload<='0';acreset<='0';acinc<='0';
 		rbus<='0';s<="0000";acload<='0';rload<='0';acbus<='0';arinc<='1';trbus<='0';drbus<='0';trload<='0';
-		read<='0';write1<='0';write<='0';pcload<='0';
+		read<='1';write1<='0';write<='0';pcload<='0';
 		elsif(state=jpnzy2)	then	--tr<=dr dr<=m
 		arload<='0';pcbus<='0';pcinc<='0';drload<='1';membus<='1';irload<='0';acreset<='0';acinc<='0';
 		rbus<='0';s<="0000";acload<='0';rload<='0';acbus<='0';arinc<='0';trbus<='0';drbus<='0';trload<='1';
-		read<='0';write1<='0';write<='0';pcload<='0';
+		read<='1';write1<='0';write<='0';pcload<='0';
 		elsif(state=jpnzy3)	then	--pc<=dr,tr
 		arload<='0';pcbus<='0';pcinc<='0';drload<='0';membus<='0';irload<='0';acreset<='0';acinc<='0';
 		rbus<='0';s<="0000";acload<='0';rload<='0';acbus<='0';arinc<='0';trbus<='1';drbus<='1';trload<='0';
@@ -418,11 +418,11 @@ begin
 		elsif(state=jpnzn1)	then	--dr<=m ar++
 		arload<='0';pcbus<='0';pcinc<='1';drload<='0';membus<='0';irload<='0';acreset<='0';acinc<='0';
 		rbus<='0';s<="0000";acload<='0';rload<='0';acbus<='0';arinc<='0';trbus<='0';drbus<='0';trload<='0';
-		read<='0';write1<='0';write<='0';pcload<='0';
+		read<='1';write1<='0';write<='0';pcload<='0';
 		elsif(state=jpnzn2)	then	--tr<=dr dr<=m
 		arload<='0';pcbus<='0';pcinc<='1';drload<='0';membus<='0';irload<='0';acreset<='0';acinc<='0';
 		rbus<='0';s<="0000";acload<='0';rload<='0';acbus<='0';arinc<='0';trbus<='0';drbus<='0';trload<='0';
-		read<='0';write1<='0';write<='0';pcload<='0';
+		read<='1';write1<='0';write<='0';pcload<='0';
 		
 		
 		elsif(state=nop1)	then	
