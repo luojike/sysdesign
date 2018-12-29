@@ -10,8 +10,8 @@ entity rsmem is
 		    reset: in std_logic;
 		    addrbus: in std_logic_vector(15 downto 0);
 		    databus: inout std_logic_vector(7 downto 0);
-		    read: in std_logic;
-		    write: in std_logic
+		    rd: in std_logic;
+		    wr: in std_logic
 	    );
 end entity;
 
@@ -72,7 +72,7 @@ begin
 				rw <= (others=>'0');
 			else
 				addr <= addrbus;
-				rw <= read & write;
+				rw <= rd & wr;
 			end if;
 
 			if(rw(1)='1') then
