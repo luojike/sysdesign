@@ -31,7 +31,7 @@ architecture rscomp_test of rscomp is
 	signal clk: std_logic := '0';
 	signal reset: std_logic;
 	signal addrbus: std_logic_vector(15 downto 0);
-	signal databus: std_logic_vector(15 downto 0);
+	signal databus: std_logic_vector(7 downto 0);
 	signal read: std_logic;
 	signal write: std_logic;
 
