@@ -10,8 +10,8 @@ entity rscpu is
 		    reset: in std_logic;
 		    addrbus: out std_logic_vector(15 downto 0);
 		    databus: inout std_logic_vector(7 downto 0);
-		    read: out std_logic;
-		    write: out std_logic
+		    rd: out std_logic;
+		    wr: out std_logic
 	    );
 end entity;
 
@@ -39,7 +39,7 @@ architecture rscpu_behav of rscpu is
 begin
 	-- address and data bus
 	addrbus <= ar;
-	databus <= dr when write='1' else "ZZZZZZZZ";
+	databus <= dr when wr='1' else "ZZZZZZZZ";
 
 	-- update pc, state and other registers
 	update_regs: process(clk)
@@ -122,7 +122,7 @@ begin
 			when fetch1 =>
 				-- should zero all other control signals
 				arload <= '1';
-				read <= '1';
+				rd <= '1';
 			when others =>
 				arload <= '0';
 				-- ......
