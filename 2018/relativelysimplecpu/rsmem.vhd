@@ -25,7 +25,7 @@ architecture rsmem_behav of rsmem is
 	constant n_addr : integer := 31;
 	constant loop_addr : integer := 7;
 
-	signal memdata: memtype(4095 downto 0) := (
+	signal memdata: memtype(65535 downto 0) := (
 	0 => RSCLAC,
 	1 => RSSTAC,
 	2 => std_logic_vector(to_unsigned(total_addr, 8)),
