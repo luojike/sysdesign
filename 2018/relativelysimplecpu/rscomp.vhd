@@ -12,8 +12,8 @@ architecture rscomp_test of rscomp is
 			    reset: in std_logic;
 			    addrbus: out std_logic_vector(15 downto 0);
 			    databus: inout std_logic_vector(7 downto 0);
-			    read: out std_logic;
-			    write: out std_logic
+			    rd: out std_logic;
+			    wr: out std_logic
 		    );
 	end component;
 
@@ -23,17 +23,17 @@ architecture rscomp_test of rscomp is
 			    reset: in std_logic;
 			    addrbus: in std_logic_vector(15 downto 0);
 			    databus: inout std_logic_vector(7 downto 0);
-			    read: in std_logic;
-			    write: in std_logic
+			    rd: in std_logic;
+			    wr: in std_logic
 		    );
 	end component;
 
 	signal clk: std_logic := '0';
 	signal reset: std_logic;
 	signal addrbus: std_logic_vector(15 downto 0);
-	signal databus: std_logic_vector(15 downto 0);
-	signal read: std_logic;
-	signal write: std_logic;
+	signal databus: std_logic_vector(7 downto 0);
+	signal rd: std_logic;
+	signal wr: std_logic;
 
 begin
 	cpu_1: rscpu
@@ -42,8 +42,8 @@ begin
 			reset => reset,
 			addrbus => addrbus,  
 			databus => databus,
-			read => read,
-			write => write
+			rd => rd,
+			wr => wr
 		);
 
 	mem_1: mem
@@ -52,8 +52,8 @@ begin
 			reset => reset,
 			addrbus => addrbus,  
 			databus => databus,
-			read => read,
-			write => write
+			rd => rd,
+			wr => wr
 		);
 
 	reset <= '1', '0' after 300 ns;
