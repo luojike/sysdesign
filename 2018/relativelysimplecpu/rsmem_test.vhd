@@ -14,8 +14,8 @@ architecture rsmem_test_arch of rsmem_test is
 			    reset: in std_logic;
 			    addrbus: in std_logic_vector(15 downto 0);
 			    databus: inout std_logic_vector(7 downto 0);
-			    read: in std_logic;
-			    write: in std_logic
+			    rd: in std_logic;
+			    wr: in std_logic
 		    );
 	end component;
 
@@ -23,8 +23,8 @@ architecture rsmem_test_arch of rsmem_test is
 	signal reset: std_logic;
 	signal addrbus: std_logic_vector(15 downto 0);
 	signal databus: std_logic_vector(7 downto 0);
-	signal read: std_logic;
-	signal write: std_logic;
+	signal rd: std_logic;
+	signal wr: std_logic;
 begin
 	mem_1: rsmem
 	port map(
@@ -32,8 +32,8 @@ begin
 			reset => reset,
 			addrbus => addrbus,  
 			databus => databus,
-			read => read,
-			write => write
+			rd => rd,
+			wr => wr
 		);
 
 	clk <= not clk after td/2;
@@ -43,8 +43,8 @@ begin
 	begin
 		for i in 0 to n loop
 			addrbus <= std_logic_vector(to_unsigned(i mod 32, 16));  
-			read <= '1';
-			write <= '0';
+			rd <= '1';
+			wr <= '0';
 			wait for td;
 		end loop;
 		wait; -- wait forever, this means stop of simulation
