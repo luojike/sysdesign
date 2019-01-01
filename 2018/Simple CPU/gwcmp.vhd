@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 entity gwcmp is
 	end entity;
 
-architecture gwcmp_test of cmp is
+architecture gwcmp_test of gwcmp is
 	component gwcpu is
 		port(
 			    clk: in std_logic;
@@ -46,7 +46,7 @@ begin
 			write => write
 		);
 
-	mem_1: mem
+	mem_1: gwmem
 	port map(
 			clk => clk,
 			reset => reset,
