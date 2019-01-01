@@ -17,12 +17,14 @@ end entity;
 
 architecture mem_behav of mem is
 	signal addr: std_logic_vector(15 downto 0);
+	signal res: std_logic_vector(7 downto 0);
 
 	type memtype is array(natural range<>) of std_logic_vector(7 downto 0);
 	constant total_addr : integer := 29;
 	constant i_addr : integer := 30;
 	constant n_addr : integer := 31;
 	constant loop_addr : integer := 7;
+	
 	
 	signal memdata: memtype(4095 downto 0) := (
 	0 => RSCLAC,
@@ -56,7 +58,7 @@ architecture mem_behav of mem is
 	28 => X"00",
 	29 => X"00",  -- total
 	30 => X"00",  -- i
-	31 => "00000100",  -- n
+	31 => "00001000",  -- n
 	others => RSNOP
 );
 
@@ -78,6 +80,7 @@ begin
 		end if;
 	end process;
 	
-	databus <= memdata(to_integer(unsigned(addr))) when (write='0') else "ZZZZZZZZ";
-
+	databus <= memdata(to_integer(unsigned(addr))) when (write='0') else "ZZZZZZZZ";--or when(read='1')
+	res<=memdata(29);
+	
 end architecture;
