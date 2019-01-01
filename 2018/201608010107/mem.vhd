@@ -26,7 +26,7 @@ architecture mem_behav of mem is
 	constant loop_addr : integer := 7;
 	
 	
-	signal memdata: memtype(4095 downto 0) := (
+	signal memdata: memtype(65535 downto 0) := (
 	0 => RSCLAC,
 	1 => RSSTAC,--m[total_total]<=ac    total=0
 	2 => std_logic_vector(to_unsigned(total_addr, 8)),
