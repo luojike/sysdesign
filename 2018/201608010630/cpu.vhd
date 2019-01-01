@@ -130,4 +130,4 @@ begin
 		end case;
 
 	end process gen_controls;
-end;//
+end;
