@@ -131,7 +131,7 @@ begin
 		if(rising_edge(clk)) then
 			
 			if(arload='1') then
-				ar <= thebus;
+				ar <= thebus;  
 			end if;
 			if(pcload='1') then
 				pc <= thebus;
@@ -211,11 +211,23 @@ begin
 					when RSINAC=>
 						nextstate <= inac1;	
 					when RSMVAC=>
-						nextstate <= mvac1;	
+						nextstate <= mvac1;
+					when RSMOVR=>
+						nextstate <= movr1;	
 					when RSADD=>
 						nextstate <= add1;
 					when RSSUB=>
 						nextstate <= sub1;
+					when RSAND=>
+						nextstate <= and1;
+					when RSOR=>
+						nextstate <= or1;
+					when RSXOR=>
+						nextstate <= xor1;
+					when RSNOT=>
+						nextstate <= not1;
+					when RSJUMP=>
+						nextstate <= jump1;
 					when RSJPNZ=>
 						if z='0' then
 							nextstate <= jpnzy1;
@@ -1149,4 +1161,3 @@ begin
 
 	end process gen_controls;
 end;
-
