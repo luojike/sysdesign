@@ -1,107 +1,68 @@
-library ieee;
+LIBRARY ieee;
+USE ieee.std_logic_1164.all; 
 
-use ieee.std_logic_1164.all;
+LIBRARY work;
 
-use ieee.numeric_std.all;
+ENTITY comp IS 
+	PORT
+	(
+		CLK :  IN  STD_LOGIC;
+		Reset :  IN  STD_LOGIC;
+		addrbus :  OUT  STD_LOGIC_VECTOR(15 DOWNTO 0);
+		databus :  OUT  STD_LOGIC_VECTOR(7 DOWNTO 0)
+	);
+END comp;
 
-entity rscomp is
+ARCHITECTURE bdf_type OF comp IS 
 
-	end entity;
+COMPONENT mem
+	PORT(clk : IN STD_LOGIC;
+		 reset : IN STD_LOGIC;
+		 read_0 : IN STD_LOGIC;
+		 write_0 : IN STD_LOGIC;
+		 addrbus : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+		 databus : INOUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+	);
+END COMPONENT;
 
-architecture rscomp_test of rscomp is
+COMPONENT cpu
+	PORT(clk : IN STD_LOGIC;
+		 reset : IN STD_LOGIC;
+		 databus : INOUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 read_0 : OUT STD_LOGIC;
+		 write_0 : OUT STD_LOGIC;
+		 addrbus : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+	);
+END COMPONENT;
 
-	component rscpu is
+SIGNAL	gdfx_temp0 :  STD_LOGIC_VECTOR(7 DOWNTO 0);
+SIGNAL	SYNTHESIZED_WIRE_0 :  STD_LOGIC;
+SIGNAL	SYNTHESIZED_WIRE_1 :  STD_LOGIC;
+SIGNAL	SYNTHESIZED_WIRE_2 :  STD_LOGIC_VECTOR(15 DOWNTO 0);
 
-		port(
 
-			    clk: in std_logic;
+BEGIN 
+addrbus <= SYNTHESIZED_WIRE_2;
 
-			    reset: in std_logic;
 
-			    addrbus: out std_logic_vector(15 downto 0);
 
-			    databus: inout std_logic_vector(7 downto 0);
+b2v_inst : mem
+PORT MAP(clk => CLK,
+		 reset => Reset,
+		 read_0 => SYNTHESIZED_WIRE_0,
+		 write_0 => SYNTHESIZED_WIRE_1,
+		 addrbus => SYNTHESIZED_WIRE_2,
+		 databus => gdfx_temp0);
 
-			    read: out std_logic;
 
-			    write: out std_logic
+b2v_inst2 : cpu
+PORT MAP(clk => CLK,
+		 reset => Reset,
+		 databus => gdfx_temp0,
+		 read_0 => SYNTHESIZED_WIRE_0,
+		 write_0 => SYNTHESIZED_WIRE_1,
+		 addrbus => SYNTHESIZED_WIRE_2);
 
-		    );
+databus <= gdfx_temp0;
 
-	end component;
-
-	component rsmem is
-
-		port(
-
-			    clk: in std_logic;
-
-			    reset: in std_logic;
-
-			    addrbus: in std_logic_vector(15 downto 0);
-
-			    databus: inout std_logic_vector(7 downto 0);
-
-			    read: in std_logic;
-
-			    write: in std_logic
-
-		    );
-
-	end component;
-
-	signal clk: std_logic := '0';
-
-	signal reset: std_logic;
-
-	signal addrbus: std_logic_vector(15 downto 0);
-
-	signal databus: std_logic_vector(15 downto 0);
-
-	signal read: std_logic;
-
-	signal write: std_logic;
-
-begin
-
-	cpu_1: rscpu
-
-	port map(
-
-			clk => clk,
-
-			reset => reset,
-
-			addrbus => addrbus,  
-
-			databus => databus,
-
-			read => read,
-
-			write => write
-
-		);
-
-	mem_1: mem
-
-	port map(
-
-			clk => clk,
-
-			reset => reset,
-
-			addrbus => addrbus,  
-
-			databus => databus,
-
-			read => read,
-
-			write => write
-
-		);
-
-	reset <= '1', '0' after 300 ns;
-
-	clk <= not clk after 50 ns;
-  
-end architecture;
+END bdf_type;
