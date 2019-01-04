@@ -17,7 +17,6 @@ end entity;
 
 architecture gwmem_behav of gwmem is
 	signal addr: std_logic_vector(15 downto 0);
-	signal rw : std_logic_vector(0 to 1);
 
 	type memtype is array(natural range<>) of std_logic_vector(7 downto 0);
 	constant total_addr : integer := 29;
@@ -57,7 +56,7 @@ architecture gwmem_behav of gwmem is
 	28 => X"00",
 	29 => X"00",  -- total
 	30 => X"00",  -- i
-	31 => X"00",  -- n
+	31 => "00000101",  -- n
 	others => RSNOP
 );
 
@@ -66,21 +65,19 @@ begin
 	-- then at the next clock does the data transmission.
 	for_clk : process(clk)
 	begin
-		if(rising_edge(clk)) then
+		if(falling_edge(clk)) then
 			if(reset='1') then
 				addr <= (others=>'0');
-				rw <= (others=>'0');
 			else
 				addr <= addrbus;
-				rw <= read & write;
 			end if;
 
-			if(rw(1)='1') then
+			if(write='1') then--write
 				memdata(to_integer(unsigned(addr))) <= databus;
 			end if;
 		end if;
 	end process;
 
-	databus <= memdata(to_integer(unsigned(addr))) when (rw(1)='0') else (others=>'Z');
+	databus <= memdata(to_integer(unsigned(addr))) when (write='0') else "ZZZZZZZZ";
 
 end architecture;
