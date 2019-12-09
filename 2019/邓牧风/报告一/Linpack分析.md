@@ -129,7 +129,7 @@ A<sub>BR</sub> = (a<sub>B1</sub>|A<sub>B2</sub>)
 
  因为一阶更新中对O(n<sup>2</sup>)个数据只能进行O(n<sup>2</sup>)个操作，算法计算通信比很低，因此并行计算的性能将很低。为了提高性能，必须采用分块的算法。
 
- LU分解的分块算法，只要在划分A<sub>BR</sub>时把式 (3) 中的a<sub>11</sub>用b×b的块矩阵A<sub>11</sub>代替，相应地a<sub>21</sub>和a<sub>12</sub><sup>T</sup>也用(m-j×b) x b和b x (n-j×b) 的矩阵A<sub>21</sub>和A<sub>12</sub>代替，即可得到分块LU分解算法:
+ LU分解的分块算法，只要在划分A<sub>BR</sub>时把式 (3) 中的a<sub>11</sub>用b×b的块矩阵A<sub>11</sub>代替，相应地a<sub>21</sub>和a<sub>12</sub><sup>T</sup>也用(m-j×b) x b和b x (n-j×b) 的矩阵A<sub>21</sub>和A<sub>12</sub>代替，即可得到分块LU分解算法：
 
 ①用前面的算法分解A<sub>11</sub>得到A<sub>11</sub>=L<sub>11</sub>U<sub>11</sub>，同时得到A<sub>21</sub>的更新，仍记为A<sub>21</sub>。
 
