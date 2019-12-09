@@ -47,13 +47,13 @@
 
  HPL测试就是利用高斯消元法求解线性方程组，所以假设求解的问题如下：
 	
- ![](./image/image1.jpg)
+ ![image](./image/image1.jpg)
  
  HPL是通过求解一个稠密线性方程组来测试计算机的性能，a矩阵是一个n*n的矩阵，b向量是一个n维的列向量，它们两个均是已知的，x向量也是一个n维的列向量，是要求解的。经过LU分解，就可以将求解方程组的问题转换为求解两个三角方程组。LU分解是我们在线性代数中学过的，矩阵A可以转化为LU，即A=LU，L是下三角矩阵，U是上三角矩阵。这实际上也就是通过高斯消元法来求解的，在进行高斯消元法后可以得到一个上三角矩阵，也就是U矩阵，其过程中的变换矩阵也就是L矩阵。
 
  由A=LU可得，即 Ax=b就可以表示为LUx=b，令y=Ux，则Ly=b就可以求得y的值，再由Ux=y，求得x的值。计算公式如下：
 	
- ![](./image/image2.jpg)
+ ![image](./image/image2.jpg)
 
 
 
@@ -61,7 +61,7 @@
 
  通过上述式子就可以计算出线性方程组的解，然后统计计算大规模的稠密线性方程组耗费的时间，就可以求得计算浮点的速率。计算公式如下：
  
- ![](./image/image3.jpg)
+ ![image](./image/image3.jpg)
  
  公式中 2N<sup>3</sup>/3+3N<sup>2</sup>/2表示的是浮点运算的规模， T<sub>HPL</sub>表示的是HPL测试程序执行的时间，也就是[测试过程](#1)中求n维列向量的时间，GFLOPS单位：每秒10亿次的浮点运算数（10<sup>9</sup>）。得到浮点速率后，与计算机的峰值相除（**计算机的峰值**是理论最大性能，是不可能达到的理想值，等于CPU主频 x CPU每个时钟周期执行浮点运算的次数 x 系统中CPU核心数目），就可以得到计算机的运行效率。
 
@@ -84,7 +84,7 @@
 
  如前面所述，HPL解决的是一个线性方程组求解的问题：
 
- ![](./image/image1.jpg)
+ ![image](./image/image1.jpg)
 
  通过对于方程式n行n+1列的系数矩阵的行基本变换进行LU因式分解，最后得到：
 ```
@@ -100,11 +100,11 @@
 
  假定已得到置换矩阵P<sub>1</sub>，…，P<sub>j</sub>使得：
 
-  ![](./image/image5.jpg)
+  ![image](./image/image5.jpg)
 
  其中A<sub>TL</sub>，L<sub>TL</sub>和U<sub>TL</sub>是j×j矩阵，原矩阵被下面的矩阵所覆盖：
 
-  ![](./image/image6.jpg)
+  ![image](./image/image6.jpg)
 
  把式 (1) 中右下角部分矩阵仍记为A<sub>BR</sub>，下面对A<sub>BR</sub>继续进行列主元LU分解，其步骤如下：
 
@@ -116,7 +116,7 @@ A<sub>BR</sub> = (a<sub>B1</sub>|A<sub>B2</sub>)
 
 ③作变换P<sub>j+1</sub>A，实际上是对 (A<sub>BL</sub>|A<sub>BR</sub>) 的第一行和主元行作变换，然后划分A<sub>BR</sub>为：
 
- ![](./image/image7.jpg)
+ ![image](./image/image7.jpg)
 
 ④作更新a<sub>21</sub>←a<sub>21</sub>a<sub>11</sub>。
 
@@ -146,18 +146,18 @@ A<sub>BR</sub> = (a<sub>B1</sub>|A<sub>B2</sub>)
  
  *
 
- ![](./image/image8.jpg)
+ ![image](./image/image8.jpg)
 
  该算法是最经典的算法。但是广播来源的后一个进程必须发送一条消息。
 
  *
  
- ![](./image/image9.jpg)
+ ![image](./image/image9.jpg)
 
  该算法中，广播源必须发送两条消息，但是后一个进程只需要接收一条消息。
 
  *
  
- ![](./image/image10.jpg)
+ ![image](./image/image10.jpg)
 
  该广播过程分为两部分：0-> 1和0-> Q / 2；然后，过程1和Q / 2充当两个环的来源：1-> 2，Q / 2-> Q / 2 + 1；2-> 3，Q / 2 + 1->Q / 2 + 2，依此类推。Q为整个广播过程中的进程数。该算法的优势在于减少了最后一个进程接收面板的时间，但广播源发送了两条消息。
