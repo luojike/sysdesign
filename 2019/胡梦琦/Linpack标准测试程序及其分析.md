@@ -41,9 +41,9 @@ Ux= y
 对列主元(即行的基等变换)LU分解算法如下:  
 假设A为mxn矩阵L为 mxn 单位下三角矩阵,U为mxn上三角矩阵，P为mxm置换矩阵，P = Pn-1⋯Pi，Pj 为第j次循环完成第j行与主元行进行交换的置换矩阵。 
 首先计算n×n + 1系数矩阵[A b] = [[L，U] y]的行局部旋转来计算LU分解来解决n阶线性系统：Ax = b。由于随着分解的进行将较低的三角因子L应用于b，因此通过求解较高的三角系Ux = y可获得解x.下三角矩阵L保持不旋转，并且不返回旋转数组。
- ![alt 图标](file:///Users/pro/Downloads/hpl-2.3/www/mat2.jpg)  
+ ![alt 图标](https://github.com/MQ-Hu/hello-world/blob/master/images/mat2.jpg)  
 根据块循环方案，将数据分布到二维P-Q Q处理网格中，以确保“良好”的负载平衡以及算法的可伸缩性。首先将n×n + 1系数矩阵逻辑上划分为nb×nb块，这些块周期性地“降级”到Pby-Q处理网格上。这是在矩阵的两个维度上完成的。  
-![alt 图标](file:///Users/pro/Downloads/hpl-2.3/www/main.jpg)
+![alt 图标](https://github.com/MQ-Hu/hello-world/blob/master/images/main.jpg)
 
 ### 四、部分代码解析
 #### 向后替换：  
@@ -67,6 +67,7 @@ AMAT（本地输入/输出） HPL_T_pmat *
 * **HPL_pdtest**
 <u>void HPL_pdtest( HPL_T_test * TEST，HPL_T_grid * GRID,HPL_T_palg * ALGO,const int N,const int NB )</u>  
 在给定一组参数（例如过程网格，问题大小，分布阻塞因子）的情况下，HPL_pdtest执行一个测试。此函数生成数据，调用并乘以线性系统求解器，检查获得的矢量解的准确性并写入将此信息保存到TEST-> outfp指向的文件中。
+![alt 图标](https://github.com/MQ-Hu/hello-world/blob/master/images/1.3.png)
 
 TEST（全局输入）HPL_T _test *  
         在输入时，TEST指向测试数据结构：outfp
