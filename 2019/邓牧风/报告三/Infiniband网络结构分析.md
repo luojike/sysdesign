@@ -2,11 +2,11 @@
 
 ## 目录
 
-### 1.[Infiniband介绍](#infiniband介绍)
+### 1.[Infiniband介绍](#1)
 
-### 2.[Infiniband网络结构](#infiniband网络结构)
+### 2.[Infiniband网络结构](#2)
 
-### 3.[Infiniband构成的集群网络](#infiniband构成的集群网络)
+### 3.[Infiniband构成的集群网络](#3)
 
 
 
@@ -15,7 +15,7 @@
 
 
 ---
-
+<span id="1"></span>
 ### 1.Infiniband介绍
 
 ​	1999年开始起草规格及标准规范，2000年正式发表，但发展速度不及Rapid I/O、PCI-X、PCI-E和FC，加上Ethernet从1Gbps进展至10Gbps。所以直到2005年之后，InfiniBand Architecture(IBA)才在集群式超级计算机上广泛应用。全球HPC高算系统TOP500大效能的超级计算机中有相当多套系统都使用上IBA。
@@ -42,6 +42,7 @@
 
 
 
+<span id="2"></span>
 ### 2.Infiniband网络结构
 
   Infiniband的协议采用分层结构，是一种分层协议，类似于TCP/IP协议， 每层负责不同的功能，下层为上层服务，不同层次相互独立 。如下图所示：
@@ -71,6 +72,7 @@
 
 ​		 
 
+<span id="3"></span>
 ### 3.Infiniband构成的集群网络
 
 ​	**胖树拓扑结构**是搭建大规模Infiniband网络的常用网络拓扑结构。胖树拓扑结构一方面能够提供非阻塞传输，具有可扩展性强和易管理等优点，而另一方面它往往会造成通信路线的冗余。
