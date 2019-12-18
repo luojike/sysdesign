@@ -2,11 +2,11 @@
 
 ## 目录
 
-### 1.[Infiniband介绍](#Infiniband介绍)
+### 1.[Infiniband介绍](#infiniband介绍)
 
-### 2.[Infiniband网络结构](#Infiniband网络结构)
+### 2.[Infiniband网络结构](#infiniband网络结构)
 
-### 3.[Infiniband构成的集群网络](#Infiniband构成的集群网络)
+### 3.[Infiniband构成的集群网络](#infiniband构成的集群网络)
 
 
 
@@ -44,7 +44,7 @@
 
 ### 2.Infiniband网络结构
 
- 	Infiniband的协议采用分层结构，是一种分层协议，类似于TCP/IP协议， 每层负责不同的功能，下层为上层服务，不同层次相互独立 。如下图所示：
+  Infiniband的协议采用分层结构，是一种分层协议，类似于TCP/IP协议， 每层负责不同的功能，下层为上层服务，不同层次相互独立 。如下图所示：
 
 ​	![image2](./image/image2.jpg)
 
