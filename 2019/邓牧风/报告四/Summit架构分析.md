@@ -48,7 +48,7 @@
 <span id="2"></span>
 ### 2.Summit介绍
 
- 2018年6月8日公布的美国能源部Summit超级计算机迅速燃爆了高性能计算社区，它的双精度浮点理论峰值性能超过200 PFLOPS （Top500官网文章说是215 PFLOPS ），大大超过了太湖之光的125 PFLOPS ， 对于某些科学应用，Summit还可以每秒进行超过30亿次混合精度计算。Summit的主要架构是CPU+GPU，其中CPU是IBM Power 9，GPU是NVIDIA Tesla V100。全系统共4608节点，其中每个节点包含2 CPU+6 GPU，并与双轨Mellanox EDR 100Gb/s [InfiniBand](https://github.com/luojike/sysdesign/blob/master/2019/%E9%82%93%E7%89%A7%E9%A3%8E/%E6%8A%A5%E5%91%8A%E4%B8%89/Infiniband%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90.md)互连。Summit还拥有10 PB以上的内存，并配有快速，高带宽的通道，可以高效地进行数据移动 。根据每块[Tesla V100]( https://github.com/luojike/sysdesign/blob/master/2019/邓牧风/报告二/TeslaGPU架构分析.md "Tesla V100")能够给出7.8TFLOPS 的双精度浮点性能来计算，那么27648块GPU提供的双精度浮点理论峰值性能就已经达到了215.65 PFLOPS 。因此，Summit本质上就是一个超大规模的V100集群。 
+ 2018年6月8日公布的美国能源部Summit超级计算机迅速燃爆了高性能计算社区，它的双精度浮点理论峰值性能超过200 PFLOPS （Top500官网文章说是215 PFLOPS ），大大超过了太湖之光的125 PFLOPS ， 对于某些科学应用，Summit还可以每秒进行超过30亿次混合精度计算。Summit的主要架构是CPU+GPU，其中CPU是IBM Power 9，GPU是NVIDIA Tesla V100。全系统共4608节点，其中每个节点包含2 CPU+6 GPU，并与双轨Mellanox EDR 100Gb/s [InfiniBand](https://github.com/luojike/sysdesign/blob/master/2019/邓牧风/报告三/Infiniband网络结构分析.md "InfiniBand")互连。Summit还拥有10 PB以上的内存，并配有快速，高带宽的通道，可以高效地进行数据移动 。根据每块[Tesla V100]( https://github.com/luojike/sysdesign/blob/master/2019/邓牧风/报告二/TeslaGPU架构分析.md "Tesla V100")能够给出7.8TFLOPS 的双精度浮点性能来计算，那么27648块GPU提供的双精度浮点理论峰值性能就已经达到了215.65 PFLOPS 。因此，Summit本质上就是一个超大规模的V100集群。 
 
 ![image1](./image/image1.jpg)
 
