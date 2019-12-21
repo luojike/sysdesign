@@ -4,11 +4,11 @@
 
 ---
 
-### 1.[Summit背景](#summit背景)
+### 1.[Summit背景](#1)
 
-### 2.[Summit介绍](#summit介绍)
+### 2.[Summit介绍](#2)
 
-### 3.[Summit架构](#summit架构)
+### 3.[Summit架构](#3)
 
 
 
@@ -22,11 +22,12 @@
 
 ---
 
+<span id="1"></span>
 ### 1.Summit背景
 
  为什么Summit超级计算机问世了？这其实也有中国的功劳。
 
-![image4](D:\计算机系统设计\课程报告\image4\image4.jpg)
+![image4](./image/image4.jpg)
 
  超算TOP500每年发布两次，我们国家的天河2号和太湖之光，分别六次和四次拿到冠军，一共十次，相当于连续五年占据了TOP500的冠军位置。所以美国政府也是很着急。之前由于奥巴马政府对超算不够重视，奥巴马只是在第二个任期快结束的时候才发布了一项总统令，加快超算研制的创新步伐。 而特朗普就任以后，却对超算极其重视，在砍掉了很多科学研究预算的情况下，超算的预算不但没砍，反而增加了。
 
@@ -38,31 +39,33 @@
 
  所以美国大力推动超级计算的发展，计划在2018年年底才推出的Summit也是提前了半年就推出了。以下就是2018年6月份的超算Top500榜单：
 
- ![image5](D:\计算机系统设计\课程报告\image4\image5.jpg)
+ ![image5](./image/image5.jpg)
 
 
 
 
 
+<span id="2"></span>
 ### 2.Summit介绍
 
  2018年6月8日公布的美国能源部Summit超级计算机迅速燃爆了高性能计算社区，它的双精度浮点理论峰值性能超过200 PFLOPS （Top500官网文章说是215 PFLOPS ），大大超过了太湖之光的125 PFLOPS ， 对于某些科学应用，Summit还可以每秒进行超过30亿次混合精度计算。Summit的主要架构是CPU+GPU，其中CPU是IBM Power 9，GPU是NVIDIA Tesla V100。全系统共4608节点，其中每个节点包含2 CPU+6 GPU，并与双轨Mellanox EDR 100Gb/s InfiniBand互连。Summit还拥有10 PB以上的内存，并配有快速，高带宽的通道，可以高效地进行数据移动 。根据每块[Tesla V100]( https://github.com/luojike/sysdesign/blob/master/2019/邓牧风/报告二/TeslaGPU架构分析.md "Tesla V100")能够给出7.8TFLOPS 的双精度浮点性能来计算，那么27648块GPU提供的双精度浮点理论峰值性能就已经达到了215.65 PFLOPS 。因此，Summit本质上就是一个超大规模的V100集群。 
 
-![image1](D:\计算机系统设计\课程报告\image4\image1.jpg)
+![image1](./image/image1.jpg)
 
  橡树岭国家实验室的团队声称Summit是第一台从头开始设计的超级计算机，可以运行AI应用程序，例如机器学习和神经网络。它拥有来自Nvidia的超过27,000个GPU芯片，其增加了大量AI应用程序，并且还包括一些IBM去年推出的Power9芯片，专门用于AI工作负载。另外还有一个超高速通信链路，用于在这些硅芯片之间传输数据。
 
- ![image2](D:\计算机系统设计\课程报告\image4\image2.jpg)
+ ![image2](./image/image2.jpg)
 
 
 
 
 
+<span id="3"></span>
 ### 3.Summit架构
 
  从上面介绍也可以得知每个计算节点都有两个IBM POWER9（P9）CPU和六个NVIDIA Volta V100 GPU，并与Mellanox EDR IB网络相连。采用的是FATTURE网络拓扑 。
 
-![image6](D:\计算机系统设计\课程报告\image4\image6.jpg)
+![image6](./image/image6.jpg)
 
 * #### 节点设计
 
