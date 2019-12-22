@@ -1,8 +1,60 @@
 一、实验目的及要求
 1、掌握Linpack知识
 2、分析Linpack测试浮点运算的结果
+
 二、Linpack介绍
-Linpack是国际上最流行的用于测试高性能计算机系统浮点性能的benchmark。通过对高性能计算机采用高斯消元法求解一元N次稠密线性代数方程组的测试，评价高性能计算机的浮点性能。
-HPL是针对现代并行计算机提出的测试方式。用户在不修改任意测试程序的基础上，可以调节问题规模大小(矩阵大小)、使用CPU数目、使用各种优化方法等等来执行该测试程序，以获取最佳的性能。衡量计算机性能的一个重要指标就是计算峰值或者浮点计算峰值，它是指计算机每秒钟能完成的浮点计算最大次数。包括理论浮点峰值和实测浮点峰值。
+Linpack是国际上最流行的用于测试高性能计算机系统浮点性能的benchmark。通过对高性能计算机采用高斯消元法求解一元N次稠密线性代数方程组的测试，
+评价高性能计算机的浮点性能。
+HPL是针对现代并行计算机提出的测试方式。用户在不修改任意测试程序的基础上，可以调节问题规模大小(矩阵大小)、使用CPU数目、使用各种优化方法等等
+来执行该测试程序，以获取最佳的性能。衡量计算机性能的一个重要指标就是计算峰值或者浮点计算峰值，它是指计算机每秒钟能完成的浮点计算最大次数。
+包括理论浮点峰值和实测浮点峰值。
 理论浮点峰值是该计算机理论上能达到的每秒钟能完成浮点计算最大次数，它主要是由CPU的主频决定的。
      理论浮点峰值＝CPU主频×CPU每个时钟周期执行浮点运算的次数×系统中CPU数
+     
+三、测试环境安装
+1、安装GotoBLAS
+   1）解压
+   #tar zxvf GotoBLAS2-1.13.tar.gz
+   2）进入解压后的文件夹
+   #cd GotoBLAS2
+   3）修改Makefile.rule文件
+   #vim Makefile.rule
+   参照如下修改（去掉注释符）
+   VERSION = 1.13 
+   TARGET = NEHALEM
+   BINARY=64        /*如果你是用的是64位进行该操作*/
+   USE_OPENMP = 1
+   INTERFACE64 = 1
+2、安装MPICH
+   1）解压
+   #tar zxvf mpich-3.3.tar.gz
+   2)建立安装文件夹（我的是setmpich）
+   #mkdir setmpich
+   3)进入解压后的文件夹mpich-3.3进行安装
+   #cd mpich-3.3
+   #./configure --prefix=/root/dawn/test/setmpich(这个就是我们前面建立的用来安装mpich的文件夹）
+   #make
+   #make install
+   4）更新环境变量
+   #vim ~/.bashrc
+   找到最底下两行，分别将路径修改为setmpich下的bin和lib文件路径
+   5）使其生效
+   #source ~/.bashrc
+   6）检测是否成功
+   #which mpirun
+3、HPL安装
+   1）解压
+   2)进入解压后的文件夹，进入setup，对其中的Make.Linux_PII_FBLAS进行复制，重命名并放到hpl-2.3目录中去
+   #cd hpl-2.3
+   #cd setup
+   #cp /root/dawn/test/hpl-2.3/setup/Make.Linux_PII_FBLAS ../Make.test(这个是自己指定的名字）
+   3）切换到hpl-2.3目录下，更改配置
+   #cd ..
+   #gedit Make.test
+   4）执行以下命令
+   #make arch=test
+   5）如果执行成功，则在/root/dawn/test/hpl-2.3/bin目录下会生成一个test目录，此目录下会有HPL.dat文件和xhpl文件。如未成功。
+   很可能是Make.test文件有误。
+   
+四、运行结果
+    进入/hpl/bin/test/目录下，输入mpirun –np <N> xhpl >>filename
