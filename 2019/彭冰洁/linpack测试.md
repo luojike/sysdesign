@@ -98,7 +98,7 @@ HPL.out      output file name (if any)
 用一定的内存，除了矩阵（N×N）之外，HPL还有其他的内存开销，另外通信也需要占用一些缓存。矩阵占用系统总内存的80%左右为最佳，即N×N×8=系统总内存×80%。  
 NB：为提高数据的局部性，从而提高整体性能，HPL采用分块矩阵的算法。分块的大小对性能有很大的影响，NB的选择和软硬件许多因素密切相关。NB值的选择主要是通过实际测试得到最优值。  
 HPL求解时对矩阵执行LU分解。得到一个上三角矩阵U和一个下三角矩阵L，A等于这两个矩阵的乘积。
-LU 分解的形式有三种：Right-looking LU Faetoriza—tion、Left-looking LU 
+LU 分解的形式有三种：Right-looking LU Faetorization、Left-looking LU 
 Faetorization 和 Crout-looking LU Factorization，它们之间的区别主要体现在panel 内 LU 分解以及尾矩阵更新的执行顺序不同。   
 
 
