@@ -11,6 +11,7 @@ IB的传输方式和介质相当灵活，在设备机内可用印刷电路板的
 1999年开始起草规格及标准规范，2000年正式发表，但发展速度不及Rapid I/O、PCI-X、PCI-E和FC，加上Ethernet从1Gbps进展至10Gbps。所以直到2005年之后，InfiniBand Architecture(IBA)才在集群式超级计算机上广泛应用。全球Top 500大效能的超级计算机中有相当多套系统都使用上IBA。
 ### IB协议简介
 InfiniBand也是一种分层协议(类似TCP/IP协议)，每层负责不同的功能，下层为上层服务，不同层次相互独立。 IB采用IPv6的报头格式。其数据包报头包括本地路由标识符LRH，全局路由标示符GRH，基本传输标识符BTH等。
+![1](https://github.com/luojike/sysdesign/blob/master/2019/%E5%88%98%E7%A8%8B%E7%9D%BF/Infiniband%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/image/1.png)
 #### 物理层
 物理层定义了电气特性和机械特性，包括光纤和铜媒介的电缆和插座、底板连接器、热交换特性等。定义了背板、电缆、光缆三种物理端口。
 并定义了用于形成帧的符号(包的开始和结束)、数据符号(DataSymbols)、和数据包直接的填充(Idles)。详细说明了构建有效包的信令协议，如码元编码、成帧标志排列、开始和结束定界符间的无效或非数据符号、非奇偶性错误、同步方法等。
@@ -31,6 +32,7 @@ InfiniBand为不同类型的用户提供了不同的上层协议，并为某些�
 + IPoIB(IP-over-IB)是为了实现INFINIBAND网络与TCP/IP网络兼容而制定的协议，基于TCP/IP协议，对于用户应用程序是透明的，并且可以提供更大的带宽，也就是原先使用TCP/IP协议栈的应用不需要任何修改就能使用IPoIB。
 + uDAPL(UserDirect Access Programming Library)用户直接访问编程库是标准的API，通过远程直接内存访问 RDMA功能的互连（如InfiniBand）来提高数据中心应用程序数据消息传送性能、伸缩性和可靠性。
 ### Infiniband的网络拓扑结构，其组成单元主要分为四类：
+![2](https://github.com/luojike/sysdesign/blob/master/2019/%E5%88%98%E7%A8%8B%E7%9D%BF/Infiniband%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/image/2.png)
 + HCA（Host Channel Adapter），它是连接内存控制器和TCA的桥梁；
 + TCA(Target Channel Adapter)，它将I/O设备（例如网卡、SCSI控制器）的数字信号打包发送给HCA；
 + Infiniband link，它是连接HCA和TCA的光纤，InfiniBand架构允许硬件厂家以1条、4条、12条光纤3种方式连结TCA和HCA；
