@@ -42,3 +42,13 @@ InfiniBand串行链路可以在不同的信令速率下运行，然后可以捆�
 
 IB技术的优势  
 --
+Infiniband大量用于FC/IP SAN、NAS和服务器之间的连接,作为iSCSI RDMA的存储协议iSER已被IETF标准化。目前EMC全系产品已经切换到Infiniband组网，IBM/TMS的FlashSystem系列，IBM的存储系统XIV Gen3，DDN的SFA系列都采用Infiniband网络。    
+相比FC的优势主要体现在性能是FC的3.5倍，Infiniband交换机的延迟是FC交换机的1/10，支持SAN和NAS。   
+存储系统已不能满足于传统的FC SAN所提供的服务器与裸存储的网络连接架构。HP SFS和IBM GPFS 是在Infiniband fabric连接起来的服务器和iSER Infiniband存储构建的并行文件系统，完全突破系统的性能瓶颈。      
+Infiniband采用PCI串行高速带宽链接，从SDR、DDR、QDR、FDR到EDR HCA连接，可以做到1微妙、甚至纳米级别极低的时延，基于链路层的流控机制实现先进的拥塞控制。      
+InfiniBand采用虚通道(VL即Virtual Lanes)方式来实现QoS，虚通道是一些共享一条物理链接的相互分立的逻辑通信链路，每条物理链接可支持多达15条的标准虚通道和一条管理通道(VL15)。       
+![](http://m.qpic.cn/psc?/V10d7b8e2YPTcE/T7ZeoLlLvDuhDKIHjjjMLcfaxfy5TsBsoz6u*La7lNUX23KzEiBD1bzi6xcUmUBUWqngZLs7BtMtgkCRCnxxvCeM7mNvfkQMNqTp8ifYG*g!/b&bo=gAI.AQAAAAARF50!&rf=viewer_4)
+RDMA技术实现内核旁路，可以提供远程节点间RDMA读写访问，完全卸载CPU工作负载，基于硬件传出协议实现可靠传输和更高性能。     
+![](http://m.qpic.cn/psc?/V10d7b8e2YPTcE/T7ZeoLlLvDuhDKIHjjjMLVfUKIZHJbJVPENlNGvi8LuVQgMx*WMKF72p8kd6hixzVnAu.e5hWDDmVH1lDqMAlwsLf71BuVpYdX4S*NyH9m4!/b&bo=gAJxAQAAAAARF9I!&rf=viewer_4)    
+相比TCP/IP网络协议，IB使用基于信任的、流控制的机制来确保连接的完整性，数据包极少丢失，接受方在数据传输完毕之后，返回信号来标示缓存空间的可用性，所以IB协议消除了由于原数据包丢失而带来的重发延迟，从而提升了效率和整体性能。      
+TCP/IP具有转发损失的数据包的能力，但是由于要不断地确认与重发，基于这些协议的通信也会因此变慢，极大地影响了性能。     
