@@ -8,7 +8,7 @@ Infiniband网络架构分析
 - InfiniBand架构  
 - InfiniBand速率发展介绍   
 - IB技术的优势   
-- 
+- IB应用场景
 
 Infiniband网络
 ----
@@ -49,6 +49,11 @@ Infiniband采用PCI串行高速带宽链接，从SDR、DDR、QDR、FDR到EDR HCA
 InfiniBand采用虚通道(VL即Virtual Lanes)方式来实现QoS，虚通道是一些共享一条物理链接的相互分立的逻辑通信链路，每条物理链接可支持多达15条的标准虚通道和一条管理通道(VL15)。       
 ![](http://m.qpic.cn/psc?/V10d7b8e2YPTcE/T7ZeoLlLvDuhDKIHjjjMLcfaxfy5TsBsoz6u*La7lNUX23KzEiBD1bzi6xcUmUBUWqngZLs7BtMtgkCRCnxxvCeM7mNvfkQMNqTp8ifYG*g!/b&bo=gAI.AQAAAAARF50!&rf=viewer_4)
 RDMA技术实现内核旁路，可以提供远程节点间RDMA读写访问，完全卸载CPU工作负载，基于硬件传出协议实现可靠传输和更高性能。     
-![](http://m.qpic.cn/psc?/V10d7b8e2YPTcE/T7ZeoLlLvDuhDKIHjjjMLVfUKIZHJbJVPENlNGvi8LuVQgMx*WMKF72p8kd6hixzVnAu.e5hWDDmVH1lDqMAlwsLf71BuVpYdX4S*NyH9m4!/b&bo=gAJxAQAAAAARF9I!&rf=viewer_4)    
+![  ](http://m.qpic.cn/psc?/V10d7b8e2YPTcE/T7ZeoLlLvDuhDKIHjjjMLVfUKIZHJbJVPENlNGvi8LuVQgMx*WMKF72p8kd6hixzVnAu.e5hWDDmVH1lDqMAlwsLf71BuVpYdX4S*NyH9m4!/b&bo=gAJxAQAAAAARF9I!&rf=viewer_4)    
 相比TCP/IP网络协议，IB使用基于信任的、流控制的机制来确保连接的完整性，数据包极少丢失，接受方在数据传输完毕之后，返回信号来标示缓存空间的可用性，所以IB协议消除了由于原数据包丢失而带来的重发延迟，从而提升了效率和整体性能。      
 TCP/IP具有转发损失的数据包的能力，但是由于要不断地确认与重发，基于这些协议的通信也会因此变慢，极大地影响了性能。     
+
+IB应用场景  
+----
+Infiniband灵活支持直连及交换机多种组网方式，主要用于HPC高性能计算场景，大型数据中心高性能存储等场景，HPC应用的共同诉求是低时延(<10微秒)、低CPU占有率（<10%）和高带宽(主流56或100Gbps)   
+![   ](http://m.qpic.cn/psc?/V10d7b8e2YPTcE/T7ZeoLlLvDuhDKIHjjjMLQXcNj4TbONZjqEnh5hKVBsoz6rcrGBwOTir3H7qilSzgZ2nAxuvtukcsmAI5j4IL4mQ.*ysslQxkFwYE9BW4VQ!/b&bo=gAIzAQAAAAARF5A!&rf=viewer_4)         
