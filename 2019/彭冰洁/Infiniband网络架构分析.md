@@ -26,4 +26,11 @@ IB是以通道(Channel)为基础的双向、串行式传输，在连接拓朴中
 而每一个IBA网络称为子网(Subnet)，每个子网内最高可有65,536个节点(Node)，IBASwitch、IBA Repeater仅适用于Subnet范畴，若要通跨
 多个IBA Subnet就需要用到IBA路由器(Router)或IBA网关器(Gateway)。    
 至于节点部分，Node想与IBA Subnet接轨必须透过配接器(Adapter)，若是CPU、内存部分要透过HCA (Host Channel Adapter)，若为硬盘、I/O部分
-则要透过TCA (Target Channel Adapter)，之后各部分的衔接称为联机(Link)。上述种种构成了一个完整的IBA。    
+则要透过TCA (Target Channel Adapter)，之后各部分的衔接称为联机(Link)。上述种种构成了一个完整的IBA。     
+
+InfiniBand速率发展介绍              
+----       
+InfiniBand串行链路可以在不同的信令速率下运行，然后可以捆绑在一起实现更高的吞吐量。原始信令速率与编码方案耦合，产生有效的传输速率。
+编码将通过铜线或光纤发送的数据的错误率降至最低，但也增加了一些开销(例如，每8位数据传输10位)。     
+典型的实现是聚合四个链接单元(4X)。目前，InfiniBand系统提供以下吞吐量速率:    
+!(https://m.qpic.cn/psc?/V10d7b8e2YPTcE/T7ZeoLlLvDuhDKIHjjjMLYgCPRkga4huE5BbAXK10Eh.cBQKEF0K1Vr1SWYLE4B8GpjlKE*Q79dHcg03*EhcoFh1qVogYjz85dGulYROmfc!/b&bo=YwIvAQAAAAARB38!&rf=viewer_4);
