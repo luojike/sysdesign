@@ -1,14 +1,20 @@
 Linpack测试分析
+
 1.Linpack测试是什么
+
 LINPACK是线性系统软件包(Linear system package) 的缩写。
 Linpack现在在国际上已经成为最流行的用于测试高性能计算机系统浮点性能的benchmark。通过利用高性能计算机，用高斯消元法求解一元N次稠密线性代数方程组的测试，评价高性能计算机的浮点性能。
 Linpack测试包括三类，Linpack100、Linpack1000和HPL。在这里我们主要探讨HPL即High Performance Linpack，也叫高度并行计算基准测试，它对数组大小N没有限制，求解问题的规模可以改变，除基本算法（计算量）不可改变外，可以采用其它任何优化方法。现在使用较多的测试标准为HPL，而且阶次N也是linpack测试必须指明的参数。
 LINPACK压力测试的目的主要为检测系统中CPU的工作的稳定性及内存访问的稳定性。
 
+
 2.HPL测试的原理
+
 通过调节问题规模大小 N（矩阵大小）、进程数等测试参数，使用各种优化方法来执行该测试程序，以获取最佳的性能。当求解问题规模为 N 时，浮点运算次数为（2/3 * N3－2*N2）。因此，只要给出问题规模 N，测得系统计算时间 T，计算系统的浮点计算能力=计算量（2/3 * N3－2*N2）/计算时间 T，测试结果以浮点运算每秒（Flops）给出。
 
+
 3.HPL的算法思想
+
 假定已得到置换矩阵P1，…，Pj使得：
 
 其中ATL，LTL和UTL是j×j矩阵，原矩阵被下面的矩阵所覆盖：
@@ -23,7 +29,9 @@ ABR = (aB1|AB2)
 ⑤作更新ABR←ABR-a21a12T。
 ⑥此时ABR为 (m-j-1) × (n-j-1) 的矩阵阶，若min(m-j-1,n-j-1)>1，则重复前面的步骤, 否则结束。
 
+
 4.HPL的代码解析
+
 HPLinpack benchmark input file
 Innovative Computing Laboratory, University of Tennessee
 HPL.out output file name (if any)
