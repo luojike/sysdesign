@@ -5,6 +5,10 @@ Infiniband网络架构分析
 ==
 
 - 什么是Infiniband网络     
+- InfiniBand架构  
+- InfiniBand速率发展介绍   
+- IB技术的优势   
+- 
 
 Infiniband网络
 ----
@@ -36,3 +40,5 @@ InfiniBand串行链路可以在不同的信令速率下运行，然后可以捆�
 典型的实现是聚合四个链接单元(4X)。目前，InfiniBand系统提供以下吞吐量速率:         
 ![吞吐量速率](https://m.qpic.cn/psc?/V10d7b8e2YPTcE/T7ZeoLlLvDuhDKIHjjjMLYgCPRkga4huE5BbAXK10Eh.cBQKEF0K1Vr1SWYLE4B8GpjlKE*Q79dHcg03*EhcoFh1qVogYjz85dGulYROmfc!/b&bo=YwIvAQAAAAARB38!&rf=viewer_4)      
 
+IB技术的优势  
+--
