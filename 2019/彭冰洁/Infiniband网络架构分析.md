@@ -7,6 +7,7 @@ Infiniband网络架构分析
 - 什么是Infiniband网络     
 - InfiniBand架构  
 - InfiniBand速率发展介绍   
+- 上层协议
 - IB技术的优势   
 - IB应用场景
 
@@ -39,6 +40,17 @@ InfiniBand串行链路可以在不同的信令速率下运行，然后可以捆�
 编码将通过铜线或光纤发送的数据的错误率降至最低，但也增加了一些开销(例如，每8位数据传输10位)。     
 典型的实现是聚合四个链接单元(4X)。目前，InfiniBand系统提供以下吞吐量速率:         
 ![吞吐量速率](https://m.qpic.cn/psc?/V10d7b8e2YPTcE/T7ZeoLlLvDuhDKIHjjjMLYgCPRkga4huE5BbAXK10Eh.cBQKEF0K1Vr1SWYLE4B8GpjlKE*Q79dHcg03*EhcoFh1qVogYjz85dGulYROmfc!/b&bo=YwIvAQAAAAARB38!&rf=viewer_4)      
+
+上层协议    
+-----
+InfiniBand为不同类型的用户提供了不同的上层协议，并为某些管理功能定义了消息和协议。InfiniBand主要支持SDP、SRP、iSER、RDS、IPoIB和uDAPL等上层协议。  
+- SDP(SocketsDirect Protocol)是InfiniBand Trade Association (IBTA)制定的基于infiniband的一种协议，它允许用户已有的使用TCP/IP协议的程序运行在高速的infiniband之上。   
+- SRP(SCSIRDMA Protocol)是InfiniBand中的一种通信协议，在InfiniBand中将SCSI命令进行打包，允许SCSI命令通过RDMA(远程直接内存访问)在不同的系统之间进行通信，实现存储设备共享和RDMA通信服务。   
+- iSER(iSCSIRDMA Protocol)类似于SRP(SCSI RDMA protocol)协议，是IB SAN的一种协议 ，其主要作用是把iSCSI协议的命令和数据通过RDMA的方式跑到例如Infiniband这种网络上，作为iSCSI RDMA的存储协议iSER已被IETF所标准化。     
+- RDS(ReliableDatagram Sockets)协议与UDP 类似，设计用于在Infiniband 上使用套接字来发送和接收数据。实际是由Oracle公司研发的运行在infiniband之上，直接基于IPC的协议。     
+- IPoIB(IP-over-IB)是为了实现INFINIBAND网络与TCP/IP网络兼容而制定的协议，基于TCP/IP协议，对于用户应用程序是透明的，并且可以提供更大的带宽，也就是原先使用TCP/IP协议栈的应用不需要任何修改就能使用IPoIB。       
+- uDAPL(UserDirect Access Programming Library)用户直接访问编程库是标准的API，通过远程直接内存访问 RDMA功能的互连（如InfiniBand）来提高数据中心应用程序数据消息传送性能、伸缩性和可靠性。          
+
 
 IB技术的优势  
 --
