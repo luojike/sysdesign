@@ -5,7 +5,10 @@ Summit架构
 ==  
 - Summit简介    
 - 工作原理
-- 
+- HPCG   
+- 硬件架构    
+- 节点性能情况   
+- 机架和系统   
 
 Summit简介   
 ----
@@ -21,7 +24,7 @@ Summit超级计算机是IBM计划研发的一款超级计算机，其计算性�
 和6个Tesla V100图形处理单元加速器（NVIDIA生产）。Summit还拥有超过10PB的存储器，配以快速、高带宽的路径以实现有效的数据传输。     
 凭借每秒高达20亿亿次(200PFlops)的浮点运算速度峰值，Summit的威力将是ORNL之前排名第一的系统Titan的8倍，相当于普通笔记本电脑运算速度的100万倍，
 比之前位于榜首的中国超级计算机“神威⋅太湖之光”峰值性能（每秒12.5亿亿次）快约60%。      
-![各国计算机性能](https://m.qpic.cn/psc?/V10d7b8e2YPTcE/T7ZeoLlLvDuhDKIHjjjMLcUSaAaNO6vuoPu3j2kSiTkV5fFQEGqhEGnrjL6yvpdaFJHKEIyO1kkurZqMSEOLWQDGl16hP51uHcrlNulK5hs!/b&bo=WAKvAQAAAAARB8Q!&rf=viewer_4)
+![各国计算机性能](https://m.qpic.cn/psc?/V10d7b8e2YPTcE/T7ZeoLlLvDuhDKIHjjjMLcUSaAaNO6vuoPu3j2kSiTkV5fFQEGqhEGnrjL6yvpdaFJHKEIyO1kkurZqMSEOLWQDGl16hP51uHcrlNulK5hs!/b&bo=WAKvAQAAAAARB8Q!&rf=viewer_4)       
 超级计算机运算速度对比   
 ![超级计算机运算速度对比](http://m.qpic.cn/psc?/V10d7b8e2YPTcE/T7ZeoLlLvDuhDKIHjjjMLV1yJaGn2STrLp9H*MG6alHi7r9.Jy4LUX9cotGxwbBs8*Y8EqluobnJJrB4QrkEsQ.jIpPCBWvMoTYdWS73Nkk!/b&bo=HAKVAQAAAAARF6o!&rf=viewer_4)   
 根据超算Top500排行的数据，Summit超级计算机的峰值浮点性能为187.7PFlops，Linpack浮点性能为122.3PFlops，功耗为8805.5kW。相比之下，我国的神威太湖之光的峰值浮点性能为125.4PFlops，Linpack浮点性能为93.0PFlops，功耗为15371kW，HPCG性能为2925.75TFlops/s。    
@@ -37,5 +40,15 @@ TOP500所使用的Linpack Benchmark是一个比较老的测试规范，它的最
 从硬件架构方面来看，Summit依旧采用的是异构方式，其主CPU来自于IBM Power 9，22核心，主频为 3.07GHz，总计使用了103752颗，核心数量达到2282544个。GPU方面搭配了27648块英伟达Tesla V100计算卡，总内存为2736TB，操作系统为RHEL 7.4。         
 从架构角度来看，Summit并没有在超算的底层技术上予以彻底革新，而是通过不断使用先进制程、扩大计算规模来获得更高的性能。虽然扩大规模是提高超算效能的有效方式，但是为了将这样多的 CPU、GPU和相关存储设备有效组合也是一件困难的事情。在这一点上，Summit采用了多级结构。最基本的结构被称为计算节点，众多的计算节点组成了计算机架，多个计算机架再组成Summit超算本身。      
 2CPU+6GPU：Summit采用的计算节点型号为Power System AC922，之前的研发代号为Witherspoon，后文我们将其简称为AC922，这是一种19英寸的2U机架式外壳。从内部布置来看，每个AC922内部有2个CPU插座，满足两颗Power 9处理器的需求。每颗处理器配备了3个GPU插槽，每个插槽使用一块GV100核心的计算卡。这样2颗处理器 就可以搭配6颗GPU。内存方面，每颗处理器设计了8通道内存，每个内存插槽可以使用32GB DDR4 2666内存，这样总计可以给每个CPU可以带来256GB、107.7GB/s的内存容量和带宽。GPU方面，它没有使用了传统的PCIe插槽，而是采用了SXM2外形设计，每颗GPU配备16GB的HBM2内存，对每个CPU-GPU组而言，总计有48GB的HBM2显存和2.7TBps的带宽。        
-![ ](http://04.imgmini.eastday.com/mobile/20180809/20180809214415_5ab8053d0f319d774a18ba8a6f1c2fae_5.jpeg)
- 
+![ ](http://04.imgmini.eastday.com/mobile/20180809/20180809214415_5ab8053d0f319d774a18ba8a6f1c2fae_5.jpeg)       
+传统的英特尔体系中，CPU和GPU之间的连接采用的是PCIe总线，带宽稍显不足。但是在Summit上，由于IBM Power 9处理器的加入，因此可以使用更强大的NVLink来取代PCIe总线。   
+单颗Power 9处理器有3组共6个NVLink通道，每组2个通道。由于Power 9处理器的NVLink版本是2.0，因此其单通道速度已经提升至25GT/s，2个通道可以在CPU和GPU之间实现双向100GB/s的带宽，此外，Power 9还额外提供了48个PCIe 4.0通道。和CPU类似，GV100 GPU也有6个NVLink 2.0通道，同样也分为3组，其中一组连接CPU，另外2组连接其他两颗GPU。和CPU-GPU之间的链接一样，GPU与GPU之间的连接带宽也是100GB/s。
+
+节点性能情况   
+---
+Summit的一个完整节点拥有2颗22核心的Power 9处理器，总计44颗物理核心。每颗Power 9处理器的物理核心支持同时执行2个矢量单精度运算。换句话说，每颗核心可以在每个周期执行16次单精度浮点运算。在3.07GHz时，每颗CPU核心的峰值性能可达49.12GFlops。一个节点的CPU双精度峰值性能略低于1.1TFlops，GPU的峰值性能大约是47TFlops。请注意，这里的数值和最终公开的数据存在一些差异，其主要原因是公开数据的性能只包含GPU部分，这也是大多数浮点密集型应用可以实现的最高性能。当然，如果包含CPU的话，Summit本身的峰值性能将超越220PFlops。            
+除了CPU和GPU外，每个节点都配备了1.6TB的NVMe SSD和一个Mellanox Infiniband EDR网络接口。      
+![](http://04.imgmini.eastday.com/mobile/20180809/20180809214415_5ab8053d0f319d774a18ba8a6f1c2fae_9.jpeg)     
+
+机架和系统      
+---
