@@ -10,8 +10,8 @@ NVIDIA 的 GPU 计算产品被称作 Tesla，这是从第一代针对 GPU 计算
 ---
 
 >Streaming Multiprocessor(SM) 
->>A set of CUDA cores (SP)
->>其他资源
+>>A set of CUDA cores (SP)<br>
+>>其他资源<br>
 >Global memory
 
 
