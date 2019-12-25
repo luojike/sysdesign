@@ -12,11 +12,11 @@ HPL是针对现代并行计算机提出的测试方式。用户在不修改任�
 ---
 
 在安装HPL之前，系统中必须具备以下三个条件：
-1）   编译器
+1）编译器
 系统必须安装了支持C语言和Fortran 77语言的编译器。推荐采用在Linux操作系统中自带的GNU编译器。
-2）   并行环境
+2）并行环境
 并行环境是指MPI。在以太网环境下，一般采用MPICH，当然也可以是其它版本的MPI，如LAM－MPI。在Myrinet网下，采用MPICH-GM。若是其它网络环境就采用相应的MPI。
-3）   BLAS库
+3）BLAS库
 BLAS库及基本线性代数库，采用BLAS库的性能对最终测得的Linpack性能有密切的关系。常用的BLAS库有GOTO、Atlas、ACML、ESSL、MKL等
 2．下载与编译
 Step 1：   从www.netlib.org/benchmark/hpl 网站上下载HPL源代码包hpl.tar.gz并解包。
